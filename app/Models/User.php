@@ -10,6 +10,26 @@ class User extends Authenticatable
     use HasFactory;
 
     /**
+     * モデルの日付カラムのストレージ形式
+     *
+     * @var string
+     */
+    protected $dateFormat = 'Y-m-d H:i:s.v';
+
+    /**
+     * モデルの日付カラムを指定する。
+     * ここに指定されたものが保存時に$dateFormatで保存される。
+     * そのため、保存する際の指定でCarbonインスタンスのまま保存しても小数点以下まで保存できる。
+     *
+     * @var string[]
+     */
+    protected $dates = [
+        'first_logged_in_at',
+        'created_at',
+        'updated_at',
+    ];
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
